@@ -37,16 +37,4 @@ public class VeicoloServiceImpl implements VeicoloService {
 		return veicoloDao.getVeicoloByCategoria(categoria);
 	}
 
-	public List<Veicolo> getListDisp() {
-		return veicoloDao.getListDisp();
-	}
-
-	public Veicolo noleggiaVeicolo(Veicolo veicolo) {
-		return veicoloDao.noleggiaVeicolo(veicolo);
-	}
-
-	public Veicolo restituisciVeicolo(Veicolo veicolo) {
-		return veicoloDao.restituisciVeicolo(veicolo);
-	}	
-
 }

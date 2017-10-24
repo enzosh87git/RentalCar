@@ -18,11 +18,5 @@ public interface VeicoloService {
 	Veicolo getVeicoloById (int id);
 	
 	Veicolo getVeicoloByCategoria (Categoria categoria);
-	
-	List<Veicolo> getListDisp();
-	
-	Veicolo noleggiaVeicolo(Veicolo veicolo);
-	
-	Veicolo restituisciVeicolo(Veicolo veicolo);
 
 }

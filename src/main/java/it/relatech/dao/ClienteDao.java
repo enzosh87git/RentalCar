@@ -13,4 +13,6 @@ public interface ClienteDao {
 	Cliente deleteCliente (Cliente cliente);
 	
 	List<Cliente> getListCLienti();
+	
+	Cliente getClienteById (int id);
 }

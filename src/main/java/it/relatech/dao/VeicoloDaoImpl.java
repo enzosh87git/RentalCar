@@ -4,10 +4,14 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import it.relatech.model.Categoria;
 import it.relatech.model.Veicolo;
 
+@Repository
+@Transactional
 public class VeicoloDaoImpl extends AbstractDao implements VeicoloDao {
 
 	public Veicolo saveVeicolo(Veicolo veicolo) { 

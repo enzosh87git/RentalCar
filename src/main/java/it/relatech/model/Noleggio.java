@@ -7,6 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import it.relatech.Serializer.LocalDateDeserializer;
+import it.relatech.Serializer.LocalDateSerializer;
 
 @Entity
 public class Noleggio {
@@ -14,9 +18,13 @@ public class Noleggio {
 	@Id
 	@GeneratedValue
 	private int id;
-
+	
+	@JsonDeserialize(using = LocalDateDeserializer.class)
+	@JsonSerialize(using = LocalDateSerializer.class)
 	private LocalDate inizioNoleggio;
 
+	@JsonDeserialize(using = LocalDateDeserializer.class)
+	@JsonSerialize(using = LocalDateSerializer.class)
 	private LocalDate fineNoleggio;
 	
 	@ManyToOne

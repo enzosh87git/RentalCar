@@ -78,7 +78,7 @@ public class CarController {
 		}
 	}
 	
-	@GetMapping("/getById")
+	@GetMapping("/getById/{id}")
 	public ResponseEntity<Veicolo> getUserById(@PathVariable("id") int id) {
 		try {
 			Veicolo car = carserv.getVeicoloById(id);												//servizio
@@ -90,7 +90,7 @@ public class CarController {
 		}
 	}
 	
-	@GetMapping("/getListByCategoria")
+	@GetMapping("/getListByCategoria/{categoria}")
 	public ResponseEntity<List<Veicolo>> getListByCategoria(@PathVariable("categoria") Categoria cat) {
 		try {
 			List<Veicolo> listCarCat = (List<Veicolo>) carserv.getVeicoloByCategoria(cat);												//servizio

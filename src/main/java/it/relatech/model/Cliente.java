@@ -1,8 +1,10 @@
 package it.relatech.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -19,9 +21,11 @@ public class Cliente {
 	
 	private String cognome;
 	
-	@OneToMany(mappedBy="cliente")
+	@OneToMany(mappedBy="cliente", fetch=FetchType.EAGER)
 	private List<Noleggio> listNoleggi;
 
+	public Cliente() { listNoleggi = new ArrayList<>(); }
+	
 	public int getId() {
 		return id;
 	}

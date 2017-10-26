@@ -15,7 +15,8 @@ import it.relatech.model.Veicolo;
 public class VeicoloDaoImpl extends AbstractDao implements VeicoloDao {
 
 	public Veicolo saveVeicolo(Veicolo veicolo) { 
-		return saveVeicolo(veicolo); }
+		persist(veicolo); 
+		return veicolo; }
 
 	public Veicolo updateVeicolo(Veicolo veicolo) { 
 		update(veicolo);	
@@ -25,6 +26,7 @@ public class VeicoloDaoImpl extends AbstractDao implements VeicoloDao {
 		delete(veicolo); 
 	   return veicolo; }
 
+	@SuppressWarnings("unchecked")
 	public List<Veicolo> getListVeicoli() { 
 		return getSession().createCriteria(Veicolo.class).list(); }
 
@@ -34,10 +36,11 @@ public class VeicoloDaoImpl extends AbstractDao implements VeicoloDao {
 		return (Veicolo) criteria.uniqueResult();
 	}
 
-	public Veicolo getVeicoloByCategoria(Categoria categoria) {
+	@SuppressWarnings("unchecked")
+	public List<Veicolo> getVeicoloByCategoria(Categoria categoria) {
 		Criteria criteria = getSession().createCriteria(Veicolo.class);
-	      criteria.add(Restrictions.eq("Categoria", categoria));
-			return (Veicolo) criteria.uniqueResult();
+	      criteria.add(Restrictions.eq("categoria", categoria));
+			return criteria.list();
 	}
 	
 }

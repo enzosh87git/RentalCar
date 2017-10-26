@@ -72,21 +72,21 @@ public class ClientController {
 		try {
 			List<Cliente> listaclienti = clienteservice.getListCLienti();
 			logger.info("get client by id: " + listaclienti);
-			return new ResponseEntity<List<Cliente>>(HttpStatus.OK);
+			return new ResponseEntity<List<Cliente>>(listaclienti, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.severe("Errore: " + e);
 			return new ResponseEntity<List<Cliente>>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	@GetMapping("/getById")
-	public ResponseEntity<List<Cliente>> getById(@RequestBody int id){
+	@GetMapping("/getById/{id}")
+	public ResponseEntity<Cliente> getById(@RequestBody int id){
 		try {
-			List<Cliente> idutente = (List<Cliente>) clienteservice.getClienteById(id);
+			Cliente idutente = clienteservice.getClienteById(id);
 			logger.info("get client by id: " + idutente);
-			return new ResponseEntity<List<Cliente>>(HttpStatus.OK);
+			return new ResponseEntity<Cliente>(idutente, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.severe("Errore: " + e);
-			return new ResponseEntity<List<Cliente>>(HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<Cliente>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 }

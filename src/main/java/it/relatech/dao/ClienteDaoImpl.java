@@ -14,7 +14,8 @@ import it.relatech.model.Cliente;
 public class ClienteDaoImpl extends AbstractDao implements ClienteDao {
 
 	public Cliente saveCliente(Cliente cliente) {
-		return saveCliente(cliente);
+		persist(cliente);
+		return cliente;
 	}
 
 	public Cliente updateCliente(Cliente cliente) {

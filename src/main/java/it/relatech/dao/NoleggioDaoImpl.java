@@ -18,7 +18,8 @@ public class NoleggioDaoImpl extends AbstractDao implements NoleggioDao {
 
 	@Override
 	public Noleggio saveNoleggio(Noleggio noleggio) {
-		return saveNoleggio(noleggio);
+		persist(noleggio);
+		return noleggio;
 	}
 
 	@Override

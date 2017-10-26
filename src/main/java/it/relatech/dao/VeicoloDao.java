@@ -17,6 +17,6 @@ public interface VeicoloDao {
 	
 	Veicolo getVeicoloById (int id);
 	
-	Veicolo getVeicoloByCategoria (Categoria categoria);
+	List<Veicolo> getVeicoloByCategoria (Categoria categoria);
 
 }

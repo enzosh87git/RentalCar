@@ -35,7 +35,7 @@ public class VeicoloServiceImpl implements VeicoloService {
 		return veicoloDao.getVeicoloById(id);
 	}
 
-	public Veicolo getVeicoloByCategoria(Categoria categoria) {
+	public List<Veicolo> getVeicoloByCategoria(Categoria categoria) {
 		return veicoloDao.getVeicoloByCategoria(categoria);
 	}
 

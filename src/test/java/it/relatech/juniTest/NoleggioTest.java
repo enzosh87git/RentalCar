@@ -7,6 +7,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.time.LocalDate;
+import java.time.Month;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,12 +34,20 @@ import it.relatech.model.Cliente;
 import it.relatech.model.Colore;
 import it.relatech.model.Noleggio;
 import it.relatech.model.Veicolo;
+import it.relatech.service.ClienteService;
+import it.relatech.service.VeicoloService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { AppConfig.class, HibernateConfiguration.class })
 @WebAppConfiguration
 @Transactional
 public class NoleggioTest {
+	
+	@Autowired
+	public ClienteService cs;
+	@Autowired
+	public VeicoloService vs;
+	
 	
 	@Autowired
 	private WebApplicationContext ctx;
@@ -54,25 +65,14 @@ public class NoleggioTest {
 	public void saveNoleggio () throws JsonProcessingException, Exception {
 		
 		Noleggio noleggio = new Noleggio();
-		Cliente cliente = new Cliente();
-		Veicolo veicolo = new Veicolo();
+		Cliente cliente = cs.getClienteById(1);
+		Veicolo veicolo = vs.getVeicoloById(1);
 
-		cliente.setNome("Marco");
-		cliente.setCognome("Siciliano");
-		
-		veicolo.setMarca("Alfa Romeo");
-		veicolo.setModello("Mito");
-		veicolo.setTarga("DZ083KB");
-		veicolo.setAlimentazione(Alimentazione.DIESEL);
-		veicolo.setCategoria(Categoria.UTILITARIA);
-		veicolo.setColore(Colore.NERO);
-		
+		noleggio.setInizioNoleggio(LocalDate.of(2017, Month.OCTOBER, 28));
+		noleggio.setFineNoleggio(LocalDate.of(2017, Month.OCTOBER, 29));
+		noleggio.setCostoNoleggio(30);
 		noleggio.setCliente(cliente);
 		noleggio.setVeicolo(veicolo);
-		noleggio.setId(5);
-//		noleggio.setInizioNoleggio('27-10-2017');
-//		noleggio.setFineNoleggio('28-10-2017');
-		noleggio.setCostoNoleggio(30);
 		
 		mockMvc.perform(
 				post("/noleggio/add").content(mapper.writeValueAsString(noleggio)).contentType(MediaType.APPLICATION_JSON))

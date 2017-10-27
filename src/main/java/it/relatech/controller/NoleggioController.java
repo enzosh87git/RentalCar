@@ -57,7 +57,7 @@ public class NoleggioController {
 	}
 	
 	@GetMapping("/getList")
-	public ResponseEntity<List<Noleggio>> getListNoleggii() {
+	public ResponseEntity<List<Noleggio>> getListNoleggi() {
 		try {
 			List<Noleggio> listanoleggi = noleggioservice.getListDisp();
 			logger.info("get noleggi: " + noleggioservice);

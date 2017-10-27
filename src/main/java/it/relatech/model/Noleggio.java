@@ -2,6 +2,7 @@ package it.relatech.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -27,10 +28,10 @@ public class Noleggio {
 	@JsonSerialize(using = LocalDateSerializer.class)
 	private LocalDate fineNoleggio;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	private Cliente cliente;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	private Veicolo veicolo;
 	
 	private double costoNoleggio;
